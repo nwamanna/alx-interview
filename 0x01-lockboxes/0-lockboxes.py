@@ -1,4 +1,7 @@
+#!/usr/bin/python3
+"""Module contains lockboxes function"""
 def canUnlockAll(boxes):
+    """returns true if all boxes can open"""
     # Initialize a list to store the keys found
     eleList = set()
     eleList.add(0)
