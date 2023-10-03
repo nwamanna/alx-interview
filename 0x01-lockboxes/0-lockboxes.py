@@ -8,12 +8,12 @@ def canUnlockAll(boxes):
     def dfs(idx):
         if idx not in checkedBox:
             checkedBox.add(idx)
-        
+
         for key in boxes[idx]:
             if key not in checkedBox:
                 checkedBox.add(key)
                 dfs(key)
-    
+
     dfs(0)
 
     return len(checkedBox) == len(boxes)
