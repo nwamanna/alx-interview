@@ -3,22 +3,17 @@
 
 
 def canUnlockAll(boxes):
-    """returns true if all boxes can open"""
-    # Initialize a list to store the keys found
-    eleList = set()
-    eleList.add(0)
+    checkedBox = set()
 
-    # Iterate through each box
-    for box in boxes:
-        for element in box:
-            # Append each key found to eleList
-            eleList.add(element)
+    def dfs(idx):
+        if idx not in checkedBox:
+            checkedBox.add(idx)
+        
+        for key in boxes[idx]:
+            if key not in checkedBox:
+                checkedBox.add(key)
+                dfs(key)
+    
+    dfs(0)
 
-    print(eleList)
-    # Iterate through each box index
-    for idx in range(len(boxes)):
-        # Check if the index is in eleList (if we have the key)
-        if idx not in eleList:
-            return False  # If any box is not reachable, return False
-
-    return True
+    return len(checkedBox) == len(boxes)
